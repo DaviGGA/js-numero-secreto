@@ -1,6 +1,11 @@
 function verificaValorValido (chute) {
     const   numero = parseInt(chute)
 
+    if (fimDeJOGO(chute)) {
+         document.body.innerHTML = '<h2>Fim de Jogo!</h2>' + "<button class='jogar-novamente'>Jogar Novamente</button>"
+         return
+    }
+
     if (naoForNumero(numero)) {
        
         elementoChute.innerHTML += '<div>Valor inválido</div>'
@@ -44,8 +49,14 @@ function acertouNumero(numero) {
     return numero === numeroSorteado
 }
 
+function fimDeJOGO(chute) {
+   return chute === 'game over' || 'Fim de jogo'
+
+}
+
 document.body.addEventListener('click', (e) => {
     if (e.target.id = 'jogar-novamente') {
         window.location.reload()
     }
 })
+
